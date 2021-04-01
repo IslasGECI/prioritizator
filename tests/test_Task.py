@@ -1,5 +1,6 @@
-import prioritizator
+from prioritizator import Task
 
 
-def test_nothing():
-    pass
+def test_Task():
+    task = Task()
+
