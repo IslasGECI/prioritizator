@@ -1,2 +1,2 @@
 class Task:
-    pass
+    rating = 1500
