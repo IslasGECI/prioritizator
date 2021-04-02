@@ -155,3 +155,5 @@ def test_save_existing_task():
     task_4.load_from_csv(file_path)
     obtained_rating = task_4.rating
     assert expected_rating == obtained_rating
+    obtained_rd = task_4._rd
+    assert expected_rd == obtained_rd
