@@ -118,7 +118,7 @@ def test_constructor_only_id():
 def test_load_task():
     expected_id = 2
     task = Task(id=expected_id)
-    task.load_from_csv("tests/test_data/test_task_list.csv")
+    task.load_from_csv("tests/test_data/test_load_task_list.csv")
     obtained_id = task._id
     assert expected_id == obtained_id
     obtained_rating = round(task.rating)
@@ -129,11 +129,11 @@ def test_load_task():
     assert expected_rd == obtained_rd
 
 def test_save_existing_task():
-    file_path = "tests/test_data/test_task_list.csv"
+    file_path = "tests/test_data/test_save_task_list.csv"
     expected_id = 2
     expected_rating = 1250
     expected_rd = 25
-    task_1 = Task(id=expected_id, rating=expected_rating, rd=expected_rating)
+    task_1 = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
     task_1.save_to_csv(file_path)
     task_2 = Task(id=expected_id)
     obtained_initial_rating = round(task_2.rating)
