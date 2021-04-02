@@ -11,7 +11,7 @@ class Task:
     def match(self,opponent_task,outcome):
         self_rating = self.rating
         opponent_rating = opponent_task.rating
-        self_rd = self._player.rating
+        self_rd = self._player.rd
         opponent_rd = opponent_task._player.rd
         self._player.update_player([opponent_rating], [opponent_rd],[outcome])
         opponent_task._player.update_player([self_rating], [self_rd], [1-outcome])
