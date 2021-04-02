@@ -12,3 +12,5 @@ def test_match():
     task_2 = Task()
     task_1.match(task_2,1)
     assert task_1.rating > task_2.rating
+    assert round(task_1.rating) == 1662
+    assert round(task_2.rating) == 1430
