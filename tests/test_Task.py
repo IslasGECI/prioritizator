@@ -55,6 +55,7 @@ def test_rd_decrease():
     assert round(rd_before) == 350
     assert round(rd_after) == 290
 
+
 def test_constructor_1_argument():
     expected_rating = 2000
     task = Task(expected_rating)
@@ -64,6 +65,7 @@ def test_constructor_1_argument():
     expected_rd = 350
     assert expected_rd == obtained_rd
 
+
 def test_constructor_2_arguments():
     expected_rating = 1000
     expected_rd = 100
@@ -72,6 +74,7 @@ def test_constructor_2_arguments():
     assert expected_rating == obtained_rating
     obtained_rd = round(task._rd)
     assert expected_rd == obtained_rd
+
 
 def test_constructor_3_arguments():
     expected_rating = 1750
@@ -85,6 +88,7 @@ def test_constructor_3_arguments():
     obtained_id = task._id
     assert expected_id == obtained_id
 
+
 def test_constructor_arguments_out_of_order():
     expected_rating = 1750
     expected_rd = 50
@@ -97,6 +101,7 @@ def test_constructor_arguments_out_of_order():
     obtained_id = task._id
     assert expected_id == obtained_id
 
+
 def test_constructor_only_id():
     expected_id = 2
     task = Task(id=expected_id)
@@ -108,3 +113,17 @@ def test_constructor_only_id():
     assert expected_rd == obtained_rd
     obtained_id = task._id
     assert expected_id == obtained_id
+
+
+def test_load():
+    expected_id = 2
+    task = Task(id=expected_id)
+    task.load_from_csv("tests/test_data/test_task_list.csv")
+    obtained_id = task._id
+    assert expected_id == obtained_id
+    obtained_rating = round(task.rating)
+    expected_rating = 2000
+    assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    expected_rd = 200
+    assert expected_rd == obtained_rd
