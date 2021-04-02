@@ -6,6 +6,7 @@ RUN pip install \
     codecov \
     flake8 \
     mutmut \
+    pandas \
     pip install git+https://github.com/deepy/glicko2 \
     pylint \
     pytest \
