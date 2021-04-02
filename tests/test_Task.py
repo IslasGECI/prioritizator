@@ -147,3 +147,11 @@ def test_save_existing_task():
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
+    expected_rating = 2000
+    expected_rd = 200
+    task_3 = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
+    task_3.save_to_csv(file_path)
+    task_4 = Task(id=expected_id)
+    task_4.load_from_csv(file_path)
+    obtained_rating = task_4.rating
+    assert expected_rating == obtained_rating
