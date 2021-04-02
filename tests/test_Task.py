@@ -5,11 +5,17 @@ DRAW = 0.5
 LOSS = 0
 
 
-def test_rating():
+def test_constructor_0_arguments():
     task = Task()
     obtained_rating = round(task.rating)
     expected_rating = 1500
     assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    expected_rd = 350
+    assert expected_rd == obtained_rd
+    obtained_id = task._id
+    expected_id = None
+    assert expected_id == obtained_id
 
 
 def test_match_win():
@@ -58,7 +64,7 @@ def test_constructor_1_argument():
     expected_rd = 350
     assert expected_rd == obtained_rd
 
-def test_constructor_2_argument():
+def test_constructor_2_arguments():
     expected_rating = 1000
     expected_rd = 100
     task = Task(expected_rating, expected_rd)
@@ -67,7 +73,7 @@ def test_constructor_2_argument():
     obtained_rd = round(task._rd)
     assert expected_rd == obtained_rd
 
-def test_constructor_3_argument():
+def test_constructor_3_arguments():
     expected_rating = 1750
     expected_rd = 50
     expected_id = 2
@@ -79,7 +85,7 @@ def test_constructor_3_argument():
     obtained_id = task._id
     assert expected_id == obtained_id
 
-def test_constructor_3_argument_out_of_order():
+def test_constructor_arguments_out_of_order():
     expected_rating = 1750
     expected_rd = 50
     expected_id = 2
