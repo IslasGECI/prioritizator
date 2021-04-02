@@ -2,8 +2,9 @@ import glicko2
 
 
 class Task:
-    def __init__(self):
-        self._player = glicko2.Player()
+    def __init__(self, rating=1500, rd=350, id=None):
+        self._player = glicko2.Player(rating,rd)
+        self._id = id
 
     @property
     def rating(self):

@@ -48,3 +48,45 @@ def test_rd_decrease():
     assert rd_before > rd_after
     assert round(rd_before) == 350
     assert round(rd_after) == 290
+
+def test_constructor_1_argument():
+    expected_rating = 2000
+    task = Task(expected_rating)
+    obtained_rating = round(task.rating)
+    assert expected_rating == obtained_rating
+    obtained_rd = task._rd
+    expected_rd = 350
+    assert expected_rd == obtained_rd
+
+def test_constructor_2_argument():
+    expected_rating = 1000
+    expected_rd = 100
+    task = Task(expected_rating, expected_rd)
+    obtained_rating = round(task.rating)
+    assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    assert expected_rd == obtained_rd
+
+def test_constructor_3_argument():
+    expected_rating = 1750
+    expected_rd = 50
+    expected_id = 2
+    task = Task(expected_rating, expected_rd, expected_id)
+    obtained_rating = round(task.rating)
+    assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    assert expected_rd == obtained_rd
+    obtained_id = task._id
+    assert expected_id == obtained_id
+
+def test_constructor_3_argument_out_of_order():
+    expected_rating = 1750
+    expected_rd = 50
+    expected_id = 2
+    task = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
+    obtained_rating = round(task.rating)
+    assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    assert expected_rd == obtained_rd
+    obtained_id = task._id
+    assert expected_id == obtained_id
