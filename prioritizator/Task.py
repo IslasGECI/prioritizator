@@ -1,3 +1,4 @@
+import csv
 import glicko2
 
 
@@ -22,3 +23,15 @@ class Task:
         self._player.update_player([opponent_rating], [opponent_rd], [outcome])
         opponent_task._player.update_player([self_rating], [self_rd], [1 - outcome])
         return self, opponent_task
+
+    def load_from_csv(self, data_path):
+        self_id = self._id
+        with open(data_path, mode="r") as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            for row in csv_reader:
+                file_id = int(row["id"])
+                if file_id == self_id:
+                    self._player.rating = float(row["rating"])
+                    self._player.rd = float(row["rd"])
+                    return self
+            raise LookupError(f"Task {self_id} not found")
