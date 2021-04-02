@@ -90,3 +90,15 @@ def test_constructor_3_argument_out_of_order():
     assert expected_rd == obtained_rd
     obtained_id = task._id
     assert expected_id == obtained_id
+
+def test_constructor_only_id():
+    expected_id = 2
+    task = Task(id=expected_id)
+    obtained_rating = round(task.rating)
+    expected_rating = 1500
+    assert expected_rating == obtained_rating
+    obtained_rd = round(task._rd)
+    expected_rd = 350
+    assert expected_rd == obtained_rd
+    obtained_id = task._id
+    assert expected_id == obtained_id
