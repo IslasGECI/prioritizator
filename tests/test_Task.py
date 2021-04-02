@@ -128,6 +128,7 @@ def test_load_task():
     expected_rd = 200
     assert expected_rd == obtained_rd
 
+
 def test_save_existing_task():
     file_path = "tests/test_data/test_save_task_list.csv"
     expected_id = 2

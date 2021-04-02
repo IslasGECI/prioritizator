@@ -39,8 +39,8 @@ class Task:
 
     def save_to_csv(self, data_path):
         task_list = pd.read_csv(data_path)
-        task_list = task_list 
+        task_list = task_list
         is_id = task_list.id == self._id
-        task_list.loc[is_id, 'rating'] = self.rating
-        task_list.loc[is_id, 'rd'] = self._rd
+        task_list.loc[is_id, "rating"] = self.rating
+        task_list.loc[is_id, "rd"] = self._rd
         task_list.to_csv(data_path, index=False)
