@@ -37,3 +37,14 @@ def test_match_loss():
     assert task_1.rating < task_2.rating
     assert round(task_1.rating) == 1338
     assert round(task_2.rating) == 1662
+
+
+def test_rd_decrease():
+    task_1 = Task()
+    task_2 = Task()
+    rd_before = task_1._rd
+    task_1.match(task_2, DRAW)
+    rd_after = task_1._rd
+    assert rd_before > rd_after
+    assert round(rd_before) == 350
+    assert round(rd_after) == 290

@@ -9,6 +9,10 @@ class Task:
     def rating(self):
         return self._player.rating
 
+    @property
+    def _rd(self):
+        return self._player.rd
+
     def match(self, opponent_task, outcome):
         self_rating = self.rating
         opponent_rating = opponent_task.rating
