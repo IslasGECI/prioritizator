@@ -46,7 +46,7 @@ def test_match_existing_tasks():
     expected_black_rating_before = 2000
     assert expected_black_rating_before == obtained_black_rating_before
     matcher = Matcher(data_path)
-    matcher.match(white=white_id, black=black_id, outcome=WHITE_WINS)
+    matcher.match(white_id=white_id, black_id=black_id, outcome=WHITE_WINS)
     white_task.load_from_csv(data_path)
     obtained_white_rating_after = white_task.rating
     assert obtained_white_rating_after > obtained_white_rating_before
