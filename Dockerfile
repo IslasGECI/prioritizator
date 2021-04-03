@@ -10,4 +10,5 @@ RUN pip install \
     pip install git+https://github.com/deepy/glicko2 \
     pylint \
     pytest \
-    pytest-cov
+    pytest-cov \
+    rope
