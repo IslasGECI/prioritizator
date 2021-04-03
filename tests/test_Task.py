@@ -1,4 +1,6 @@
+from os import remove
 from prioritizator import Task
+from shutil import copyfile
 
 WIN = 1
 DRAW = 0.5
@@ -131,6 +133,7 @@ def test_load_task():
 
 def test_save_existing_task():
     file_path = "tests/test_data/test_save_task_list.csv"
+    copyfile("tests/test_data/test_load_task_list.csv", file_path)
     expected_id = 2
     expected_rating = 1250
     expected_rd = 25
@@ -147,13 +150,4 @@ def test_save_existing_task():
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
-    expected_rating = 2000
-    expected_rd = 200
-    task_3 = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
-    task_3.save_to_csv(file_path)
-    task_4 = Task(id=expected_id)
-    task_4.load_from_csv(file_path)
-    obtained_rating = task_4.rating
-    assert expected_rating == obtained_rating
-    obtained_rd = task_4._rd
-    assert expected_rd == obtained_rd
+    remove(file_path)
