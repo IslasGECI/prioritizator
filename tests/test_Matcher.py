@@ -35,6 +35,22 @@ def test_constructor_1_argument():
 def test_match_existing_tasks():
     data_path = "tests/test_data/test_save_task_list.csv"
     copyfile("tests/test_data/test_load_task_list.csv", data_path)
+    white_id = 1
+    white_task = Task(id=white_id).load_from_csv(data_path)
+    obtained_white_rating_before = white_task.rating
+    expected_white_rating_before = 1000
+    assert expected_white_rating_before == obtained_white_rating_before
+    black_id = 2
+    black_task = Task(id=black_id).load_from_csv(data_path)
+    obtained_black_rating_before = black_task.rating
+    expected_black_rating_before = 2000
+    assert expected_black_rating_before == obtained_black_rating_before
     matcher = Matcher(data_path)
-    matcher.match(white=1, black=2, outcome=WHITE_WINS)
+    matcher.match(white=white_id, black=black_id, outcome=WHITE_WINS)
+    white_task.load_from_csv(data_path)
+    obtained_white_rating_after = white_task.rating
+    assert obtained_white_rating_after > obtained_white_rating_before
+    black_task.load_from_csv(data_path)
+    obtained_black_rating_after = black_task.rating
+    assert obtained_black_rating_after < obtained_black_rating_before
     remove(data_path)
