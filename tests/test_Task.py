@@ -132,44 +132,44 @@ def test_load_task():
 
 
 def test_save_existing_task():
-    file_path = "tests/test_data/test_save_task_list.csv"
-    copyfile("tests/test_data/test_load_task_list.csv", file_path)
+    data_path = "tests/test_data/test_save_task_list.csv"
+    copyfile("tests/test_data/test_load_task_list.csv", data_path)
     expected_id = 2
     expected_rating = 1250
     expected_rd = 25
     task_1 = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
-    task_1.save_to_csv(file_path)
+    task_1.save_to_csv(data_path)
     task_2 = Task(id=expected_id)
     obtained_initial_rating = round(task_2.rating)
     expected_initial_rating = 1500
     assert expected_initial_rating == obtained_initial_rating
-    task_2.load_from_csv(file_path)
+    task_2.load_from_csv(data_path)
     obtained_id = task_2._id
     assert expected_id == obtained_id
     obtained_rating = round(task_2.rating)
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
-    remove(file_path)
+    remove(data_path)
 
 
 def test_save_new_task():
-    file_path = "tests/test_data/test_save_task_list.csv"
-    copyfile("tests/test_data/test_load_task_list.csv", file_path)
+    data_path = "tests/test_data/test_save_task_list.csv"
+    copyfile("tests/test_data/test_load_task_list.csv", data_path)
     expected_id = 4
     expected_rating = 1234
     expected_rd = 123
     task_1 = Task(id=expected_id, rating=expected_rating, rd=expected_rd)
-    task_1.save_to_csv(file_path)
+    task_1.save_to_csv(data_path)
     task_2 = Task(id=expected_id)
     obtained_initial_rating = round(task_2.rating)
     expected_initial_rating = 1500
     assert expected_initial_rating == obtained_initial_rating
-    task_2.load_from_csv(file_path)
+    task_2.load_from_csv(data_path)
     obtained_id = task_2._id
     assert expected_id == obtained_id
     obtained_rating = round(task_2.rating)
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
-    remove(file_path)
+    remove(data_path)
