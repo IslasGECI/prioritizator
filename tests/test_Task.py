@@ -152,6 +152,7 @@ def test_save_existing_task():
     assert expected_rd == obtained_rd
     remove(file_path)
 
+
 def test_save_new_task():
     file_path = "tests/test_data/test_save_task_list.csv"
     copyfile("tests/test_data/test_load_task_list.csv", file_path)

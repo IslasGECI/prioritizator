@@ -47,7 +47,7 @@ class Task:
             task_list.loc[is_id, "rating"] = self_rating
             task_list.loc[is_id, "rd"] = self_rd
         else:
-            new_task = {'id':self_id, 'rating':self_rating, 'rd': self_rd}
+            new_task = {"id": self_id, "rating": self_rating, "rd": self_rd}
             task_list = task_list.append(new_task, ignore_index=True)
         task_list = task_list.astype({"id": int})
         task_list.to_csv(data_path, index=False)
