@@ -4,6 +4,7 @@ import pandas as pd
 import re
 import requests
 
+
 def get_headers():
     with open(".token") as token_file:
         token = token_file.readline()
@@ -11,6 +12,7 @@ def get_headers():
         "Authorization": f"token {token}",
     }
     return headers
+
 
 class Task:
     def __init__(self, rating=1500, rd=350, id=None):
@@ -81,7 +83,8 @@ class Task:
 
     def _get_title(self):
         response = requests.get(
-            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}", headers=get_headers()
+            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}",
+            headers=get_headers(),
         )
         return response.json()["title"]
 
