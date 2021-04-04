@@ -173,3 +173,11 @@ def test_save_new_task():
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
     remove(data_path)
+
+
+def test_add_rating_to_string():
+    original_string = "Hola Mundo"
+    task = Task()
+    obtained_string = task.add_rating_to_string(original_string)
+    expected_string = "[1500] Hola Mundo"
+    assert expected_string == obtained_string
