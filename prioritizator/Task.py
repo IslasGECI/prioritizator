@@ -4,6 +4,13 @@ import pandas as pd
 import re
 import requests
 
+def get_headers():
+    with open(".token") as token_file:
+        token = token_file.readline()
+    headers = {
+        "Authorization": f"token {token}",
+    }
+    return headers
 
 class Task:
     def __init__(self, rating=1500, rd=350, id=None):
@@ -73,25 +80,15 @@ class Task:
         return string_with_updated_rating
 
     def _get_title(self):
-        with open(".token") as token_file:
-            token = token_file.readline()
-        headers = {
-            "Authorization": f"token {token}",
-        }
         response = requests.get(
-            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}", headers=headers
+            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}", headers=get_headers()
         )
         return response.json()["title"]
 
     def _set_title(self, title):
-        with open(".token") as token_file:
-            token = token_file.readline()
-        headers = {
-            "Authorization": f"token {token}",
-        }
         data = f'{{"title":"{title}"}}'
         requests.patch(
             f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}",
-            headers=headers,
+            headers=get_headers(),
             data=data,
         )
