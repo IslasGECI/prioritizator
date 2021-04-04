@@ -199,3 +199,19 @@ def test_update_rating_in_string():
     obtained_string = task.update_rating_in_string(original_string)
     expected_string = "[1500] Hola Mundo"
     assert expected_string == obtained_string
+
+
+def test_add_or_update_rating_in_string_without_rating():
+    original_string = "Hola Mundo"
+    task = Task()
+    obtained_string = task.add_or_update_rating_in_string(original_string)
+    expected_string = "[1500] Hola Mundo"
+    assert expected_string == obtained_string
+
+
+def test_add_or_update_rating_in_string_with_rating():
+    original_string = "[123] Hola Mundo"
+    task = Task()
+    obtained_string = task.add_or_update_rating_in_string(original_string)
+    expected_string = "[1500] Hola Mundo"
+    assert expected_string == obtained_string
