@@ -62,3 +62,11 @@ class Task:
             r"^\[\d+\]", f"[{round(self.rating)}]", string_with_original_rating
         )
         return string_with_updated_rating
+
+    def add_or_update_rating_in_string(self, original_string):
+        is_rating = re.search(r"^\[\d+\]", original_string)
+        if is_rating:
+            string_with_updated_rating = self.update_rating_in_string(original_string)
+        else:
+            string_with_updated_rating = self.add_rating_to_string(original_string)
+        return string_with_updated_rating
