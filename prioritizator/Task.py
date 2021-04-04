@@ -95,3 +95,8 @@ class Task:
             headers=get_headers(),
             data=data,
         )
+
+    def update_rating_on_github(self):
+        original_title = self._get_title()
+        updated_title = self.add_or_update_rating_in_string(original_title)
+        self._set_title(updated_title)
