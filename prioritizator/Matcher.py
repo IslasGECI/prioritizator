@@ -17,3 +17,5 @@ class Matcher:
         white_task.match(black_task, outcome)
         white_task.save_to_csv(self.data_path)
         black_task.save_to_csv(self.data_path)
+        white_task.update_rating_on_github()
+        black_task.update_rating_on_github()
