@@ -215,3 +215,10 @@ def test_add_or_update_rating_in_string_with_rating():
     obtained_string = task.add_or_update_rating_in_string(original_string)
     expected_string = "[1500] Hola Mundo"
     assert expected_string == obtained_string
+
+
+def test_get_title():
+    task = Task(id=1)
+    obtained_title = task.get_title()
+    expected_title = "Figura circular Objetivos Desarrollo Sostenible ONU"
+    assert expected_title == obtained_title
