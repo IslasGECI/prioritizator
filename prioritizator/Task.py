@@ -1,6 +1,7 @@
 import csv
 import glicko2
 import pandas as pd
+import re
 
 
 class Task:
@@ -55,3 +56,9 @@ class Task:
     def add_rating_to_string(self, string):
         string_with_rating = f"[{round(self.rating)}] " + string
         return string_with_rating
+
+    def update_rating_in_string(self, string_with_original_rating):
+        string_with_updated_rating = re.sub(
+            r"^\[\d+\]", f"[{round(self.rating)}]", string_with_original_rating
+        )
+        return string_with_updated_rating
