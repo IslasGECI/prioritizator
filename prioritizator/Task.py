@@ -2,6 +2,7 @@ import csv
 import glicko2
 import pandas as pd
 import re
+import requests
 
 
 class Task:
@@ -70,3 +71,14 @@ class Task:
         else:
             string_with_updated_rating = self.add_rating_to_string(original_string)
         return string_with_updated_rating
+
+    def get_title(self):
+        with open(".token") as token_file:
+            token = token_file.readline()
+        headers = {
+            "Authorization": f"token {token}",
+        }
+        response = requests.get(
+            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}", headers=headers
+        )
+        return response.json()["title"]
