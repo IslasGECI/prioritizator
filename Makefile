@@ -16,14 +16,17 @@ endef
 
 check:
 	black --check --line-length 100 ${module}
+	black --check --line-length 100 src
 	black --check --line-length 100 tests
 	flake8 --max-line-length 100 ${module}
+	flake8 --max-line-length 100 src
 	flake8 --max-line-length 100 tests
 
 clean:
 	rm --force .mutmut-cache
 	rm --recursive --force ${module}.egg-info
 	rm --recursive --force ${module}/__pycache__
+	rm --recursive --force src/__pycache__
 	rm --recursive --force test/__pycache__
 
 coverage: install
@@ -40,10 +43,12 @@ install:
 
 linter:
 	$(call lint, ${module})
+	$(call lint, src)
 	$(call lint, tests)
 
 mutants:
 	mutmut run --paths-to-mutate ${module}
+	mutmut run --paths-to-mutate src
 
 tests:
 	pytest --verbose
