@@ -93,7 +93,7 @@ class Task:
         requests.patch(
             f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}",
             headers=get_headers(),
-            data=data,
+            data=data.encode("utf-8"),
         )
 
     def update_rating_on_github(self):
