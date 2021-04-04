@@ -219,6 +219,6 @@ def test_add_or_update_rating_in_string_with_rating():
 
 def test_get_title():
     task = Task(id=1)
-    obtained_title = task.get_title()
+    obtained_title = task._get_title()
     expected_title = "Figura circular Objetivos Desarrollo Sostenible ONU"
     assert expected_title == obtained_title
