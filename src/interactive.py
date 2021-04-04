@@ -2,7 +2,7 @@ from prioritizator import Matcher
 from random import randint
 
 DATA_PATH = "data/task_list.csv"
-PAGES = 5
+PAGES = 4
 TASKS_PER_PAGE = 25
 
 white_id = int(input(f"White: Page: {randint(1,PAGES)}, Issue: {randint(1,TASKS_PER_PAGE)}\nID?> "))
