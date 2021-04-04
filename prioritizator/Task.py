@@ -82,3 +82,16 @@ class Task:
             f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}", headers=headers
         )
         return response.json()["title"]
+
+    def _set_title(self, title):
+        with open(".token") as token_file:
+            token = token_file.readline()
+        headers = {
+            "Authorization": f"token {token}",
+        }
+        data = f'{{"title":"{title}"}}'
+        requests.patch(
+            f"https://api.github.com/repos/IslasGECI/pendientes/issues/{self._id}",
+            headers=headers,
+            data=data,
+        )
