@@ -134,6 +134,8 @@ def test_load_task():
 def test_save_existing_task():
     data_path = "tests/test_data/test_save_task_list.csv"
     copyfile("tests/test_data/test_load_task_list.csv", data_path)
+    with open(data_path) as data_file:
+        header_before = data_file.readline()
     expected_id = 2
     expected_rating = 1250
     expected_rd = 25
@@ -150,12 +152,17 @@ def test_save_existing_task():
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
+    with open(data_path) as data_file:
+        header_after = data_file.readline()
+    assert header_after == header_before
     remove(data_path)
 
 
 def test_save_new_task():
     data_path = "tests/test_data/test_save_task_list.csv"
     copyfile("tests/test_data/test_load_task_list.csv", data_path)
+    with open(data_path) as data_file:
+        header_before = data_file.readline()
     expected_id = 4
     expected_rating = 1234
     expected_rd = 123
@@ -172,6 +179,9 @@ def test_save_new_task():
     assert expected_rating == obtained_rating
     obtained_rd = round(task_2._rd)
     assert expected_rd == obtained_rd
+    with open(data_path) as data_file:
+        header_after = data_file.readline()
+    assert header_after == header_before
     remove(data_path)
 
 
