@@ -51,3 +51,7 @@ class Task:
             task_list = task_list.append(new_task, ignore_index=True)
         task_list = task_list.astype({"id": int})
         task_list.to_csv(data_path, index=False)
+
+    def add_rating_to_string(self, string):
+        string_with_rating = f"[{round(self.rating)}] " + string
+        return string_with_rating
