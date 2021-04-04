@@ -181,3 +181,11 @@ def test_add_rating_to_string():
     obtained_string = task.add_rating_to_string(original_string)
     expected_string = "[1500] Hola Mundo"
     assert expected_string == obtained_string
+
+
+def test_update_rating_in_string():
+    original_string = "[123] Hola Mundo"
+    task = Task()
+    obtained_string = task.update_rating_in_string(original_string)
+    expected_string = "[1500] Hola Mundo"
+    assert expected_string == obtained_string
