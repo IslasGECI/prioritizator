@@ -4,6 +4,8 @@ on: [push, pull_request]
 jobs:
   actions:
     runs-on: ubuntu-18.04
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
     steps:
     - name: Copia repositorio
       uses: actions/checkout@v2
@@ -11,12 +13,7 @@ jobs:
       run: docker build --tag islasgeci .
     - name: Verifica el formato
       run: docker run islasgeci make check
-    - name: Obten token
-      shell: bash
-      env:
-        TOKEN: ${{ secrets.TOKEN }}
-      run: echo $TOKEN > .token
     - name: Corre pruebas y evalúa cobertura
-      run: docker run islasgeci make coverage
+      run: docker run islasgeci bash -c "echo $TOKEN > .token && make coverage"
     - name: Evalúa resistencia a mutaciones
-      run: docker run islasgeci make mutants
+      run: docker run islasgeci bash -c "echo $TOKEN > .token && make mutants"
