@@ -45,4 +45,4 @@ mutants:
 	mutmut run --paths-to-mutate ${module}
 
 tests:
-	pytest --verbose
+	pytest --verbose --ignore=tests/test_github_api.py
