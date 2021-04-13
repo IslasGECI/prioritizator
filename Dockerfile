@@ -7,7 +7,7 @@ RUN pip install \
     flake8 \
     mutmut \
     pandas \
-    pip install git+https://github.com/deepy/glicko2 \
+    git+https://github.com/deepy/glicko2 \
     pylint \
     pytest \
     pytest-cov \
