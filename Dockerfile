@@ -5,9 +5,9 @@ RUN pip install \
     black \
     codecov \
     flake8 \
+    git+https://github.com/deepy/glicko2 \
     mutmut \
     pandas \
-    git+https://github.com/deepy/glicko2 \
     pylint \
     pytest \
     pytest-cov \
