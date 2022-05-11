@@ -55,12 +55,14 @@ def test_match_existing_tasks():
     assert obtained_black_rating_after < obtained_black_rating_before
     remove(data_path)
 
+
 def assert_expected_rating(id):
     white_id = id
     white_task = Task(id=white_id)
     obtained_white_rating_before = white_task.rating
     expected_white_rating_before = 1500
     assert expected_white_rating_before == obtained_white_rating_before
+
 
 def test_match_new_tasks():
     data_path = "tests/test_data/test_save_task_list.csv"
@@ -71,10 +73,10 @@ def test_match_new_tasks():
     assert_expected_rating(black_id)
     matcher = Matcher(data_path)
     matcher.match(white_id=white_id, black_id=black_id, outcome=WHITE_LOSES)
-    white_task.load_from_csv(data_path)
-    #obtained_white_rating_after = white_task.rating
-    #assert obtained_white_rating_after < obtained_white_rating_before
-    #black_task.load_from_csv(data_path)
-    #obtained_black_rating_after = black_task.rating
-    #assert obtained_black_rating_after > obtained_black_rating_before
+    #    white_task.load_from_csv(data_path)
+    # obtained_white_rating_after = white_task.rating
+    # assert obtained_white_rating_after < obtained_white_rating_before
+    # black_task.load_from_csv(data_path)
+    # obtained_black_rating_after = black_task.rating
+    # assert obtained_black_rating_after > obtained_black_rating_before
     remove(data_path)
