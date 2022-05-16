@@ -3,11 +3,10 @@ import glicko2
 import pandas as pd
 import re
 import requests
-
+import os
 
 def get_headers():
-    with open(".token") as token_file:
-        token = token_file.readline()
+    token = os.environ["TOKEN"]
     headers = {
         "Authorization": f"token {token}",
     }
