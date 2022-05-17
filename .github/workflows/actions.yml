@@ -21,6 +21,6 @@ jobs:
     - name: Verifica el formato
       run: docker run islasgeci make check
     - name: Corre pruebas y evalúa cobertura
-      run: docker run islasgeci bash -c "echo -n $TOKEN > .token && make coverage"
+      run: docker run --env TOKEN islasgeci make coverage
     - name: Evalúa resistencia a mutaciones
-      run: docker run islasgeci bash -c "echo -n $TOKEN > .token && make mutants"
+      run: docker run --env TOKEN islasgeci make mutants
